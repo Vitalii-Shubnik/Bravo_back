@@ -186,8 +186,8 @@ app.patch('/order/:id', function (req, res, next) {
 })
 
 app.get('/orders/', function (req, res, next) {
-  console.log('orders')
-  console.log(req.query)
+  // console.log('orders')
+  // console.log(req.query)
   let orders_ = [...orders]
   req.query.search && (orders_ = searchOrders(orders_, req.query.search))
   let [length, response] = applyQueryParams(req.query, orders_)
@@ -269,9 +269,9 @@ app.post('/catalog/product', function (req, res, next) {
 })
 app.get('/catalog/', function (req, res, next) {
   let catalog_ = [...catalog]
-  console.log('catalog: ')
-  console.log(catalog_)
-  console.log(req.query)
+  // console.log('catalog: ')
+  // console.log(catalog_)
+  // console.log(req.query)
   req.query.search && (catalog_ = searchProducts(catalog_, req.query.search))
   let [length, response] = applyQueryParams(req.query, catalog_)
   res.send({ length, items: response })
@@ -296,11 +296,8 @@ app.get('/catalog/example', function (req, res) {
 
   var fileName = 'test.csv';
   res.sendFile(fileName, options, function (err) {
-    if (err) {
+    if (err)
       next(err);
-    } else {
-      console.log('Sent:', fileName);
-    }
   });
 })
 app.get('/catalog/length', function (req, res, next) {
@@ -310,8 +307,8 @@ app.get('/catalog/length', function (req, res, next) {
 
 app.get('/customers', function (req, res, next) {
   let customers_ = [...customers]
-  console.log('customers')
-  console.log(req.query)
+  // console.log('customers')
+  // console.log(req.query)
 
   req.query.search && (customers_ = searchCustomers(customers_, req.query.search))
   let [length, response] = applyQueryParams(req.query, customers_)
@@ -340,7 +337,6 @@ app.get('/customers/length', function (req, res, next) {
 
 app.post('/login', function (req, res, next) {
   const { login } = req.body
-  console.log(login, userLogin)
   res.send(login === userLogin)
 })
 
